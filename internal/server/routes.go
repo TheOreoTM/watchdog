@@ -24,6 +24,18 @@ func (s *Server) RegisterRoutes() http.Handler {
 	return r
 }
 
+func (s *Server) RootHandler(w http.ResponseWriter, r *http.Request) {
+	resp := make(map[string]string)
+	resp["message"] = "Welcome to Watchdog. The VPS is online."
+
+	jsonResp, err := json.Marshal(resp)
+	if err != nil {
+		log.Fatalf("error handling JSON marshal. Err: %v", err)
+	}
+
+	_, _ = w.Write(jsonResp)
+}
+
 func (s *Server) PrimaryDatabaseHandler(w http.ResponseWriter, r *http.Request) {
 	resp := make(map[string]string)
 
