@@ -20,6 +20,7 @@ func (s *Server) RegisterRoutes() http.Handler {
 
 	r.Get("/database", s.PrimaryDatabaseHandler)
 	r.Get("/cache", s.CacheDatabaseHandler)
+	r.Get("/", s.RootHandler)
 
 	return r
 }
