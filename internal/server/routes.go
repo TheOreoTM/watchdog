@@ -52,6 +52,7 @@ func (s *Server) PrimaryDatabaseHandler(w http.ResponseWriter, r *http.Request) 
 		_, _ = w.Write(jsonResp)
 		return
 	}
+
 	if db != nil {
 		db.Close()
 	}
@@ -81,6 +82,7 @@ func (s *Server) CacheDatabaseHandler(w http.ResponseWriter, r *http.Request) {
 	if status.Err() != nil {
 		resp["message"] = "Error connecting to database " + status.Err().Error()
 		jsonResp, err := json.Marshal(resp)
+
 		if err != nil {
 			log.Fatalf("error handling JSON marshal. Err: %v", err)
 		}
@@ -89,6 +91,8 @@ func (s *Server) CacheDatabaseHandler(w http.ResponseWriter, r *http.Request) {
 		_, _ = w.Write(jsonResp)
 		return
 	}
+
+	redisClient.Close()
 
 	resp["message"] = "Cache database connection successful"
 
