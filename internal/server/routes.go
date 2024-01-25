@@ -41,7 +41,7 @@ func (s *Server) PrimaryDatabaseHandler(w http.ResponseWriter, r *http.Request) 
 
 	err := s.db.Ping()
 	if err != nil {
-		resp["message"] = "Error connecting to database" + err.Error()
+		resp["message"] = "Error connecting to database: " + err.Error()
 		jsonResp, err := json.Marshal(resp)
 		if err != nil {
 			log.Printf("error handling JSON marshal. Err: %v", err)
