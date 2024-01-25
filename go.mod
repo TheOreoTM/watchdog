@@ -1,4 +1,4 @@
-module watchdog
+module github.com/theoreotm/watchdog
 
 go 1.21.5
 

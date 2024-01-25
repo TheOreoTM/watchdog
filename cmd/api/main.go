@@ -2,7 +2,8 @@ package main
 
 import (
 	"fmt"
-	"watchdog/internal/server"
+
+	"github.com/theoreotm/watchdog/internal/server"
 )
 
 func main() {
